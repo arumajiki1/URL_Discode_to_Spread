@@ -9,8 +9,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name('url-discode-to-s
 gc = gspread.authorize(credentials)
 
 # スプレッドシートのキーを入れてください
-SPREAD_SHEET_KEY = "1elydjBIjmI1Rp-D7SXWnmF_mWhNHnIHEHtNa9XtAS7M"
-worksheet = gc.open_by_key(SPREAD_SHEET_KEY).worksheet('皆のおすすめゲーム')
+worksheet = gc.open_by_key(process.env.SPREAD_SHEET_KEY).worksheet('皆のおすすめゲーム')
 
 client = discord.Client(intents=discord.Intents.all())
 
