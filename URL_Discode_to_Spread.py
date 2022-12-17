@@ -1,4 +1,3 @@
-
 import gspread
 import discord
 from oauth2client.service_account import ServiceAccountCredentials
@@ -13,8 +12,6 @@ gc = gspread.authorize(credentials)
 SPREAD_SHEET_KEY = "1elydjBIjmI1Rp-D7SXWnmF_mWhNHnIHEHtNa9XtAS7M"
 worksheet = gc.open_by_key(SPREAD_SHEET_KEY).worksheet('皆のおすすめゲーム')
 
-#DiscordのBotのTokenを入れてください。
-DISCORD_TOKEN = "MTA1MzM0MjM3OTQ3NTc0NjkyNg.GTTrvE.hWmUhnH8vf2yJZnKyAvN1bYQZjY6Q6thHW9T-w"
 client = discord.Client(intents=discord.Intents.all())
 
 @client.event
@@ -31,4 +28,4 @@ async def on_message(message):  # メッセージを受け取ったときの挙�
     row = len(values_list) + 1 #D列の行数+1、空白行のはず
     worksheet.update_cell(row, 4, message.content) #セル(row, 4)に入力
 
-client.run(DISCORD_TOKEN)
+client.run(process.env.TOKEN)
